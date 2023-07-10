@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.musala.healenium.constants.BrowserType;
 import com.musala.healenium.constants.DriverType;
 import com.musala.healenium.pages.LoginPage;
+import com.musala.healenium.pages.RegistrationPage;
 import com.musala.healenium.settings.DriverContext;
 
 public class BaseTest {
@@ -24,6 +25,7 @@ public class BaseTest {
     static protected String loginPassword;
 
     static protected LoginPage loginPage;
+    static protected RegistrationPage registrationPage;
 
     @BeforeAll
     static public void setUp() throws FileNotFoundException, IOException {
@@ -42,6 +44,7 @@ public class BaseTest {
 
         // Set up pages
         loginPage = new LoginPage(driver);
+        registrationPage = new RegistrationPage(driver);
     }
 
     @AfterAll
