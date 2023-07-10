@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
     private WebDriver driver;
 
-    @FindBy(css = "#username")
+    @FindBy(css = "#user")
     private WebElement usernameInput;
 
     @FindBy(css = "#password")
