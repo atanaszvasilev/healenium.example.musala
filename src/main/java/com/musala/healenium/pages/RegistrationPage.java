@@ -5,40 +5,43 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class RegistrationPage {
     protected WebDriver driver;
 
-    @FindBy(css = "#user")
+    @FindBy(xpath = "//input[@id='username']")
     private WebElement usernameInput;
 
-    @FindBy(css = "#password")
+    @FindBy(xpath = "//input[@id='email']")
+    private WebElement emailInput;
+
+    @FindBy(xpath = "//input[@id='password']")
     private WebElement passwordInput;
 
-    @FindBy(xpath = "//div[@class='login']")
-    private WebElement loginButton;
+    @FindBy(xpath = "//input[@id='confirmpassword']")
+    private WebElement confirmpasswordInput;
 
-    @FindBy(xpath = "//a[@href='/Signup']")
+    @FindBy(xpath = "//div[@class='btn btn--primary']")
     private WebElement registerButton;
 
-    public LoginPage(WebDriver driver) {
+    public RegistrationPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-    }
-
-    public WebElement getUserNameInput() {
-        return this.usernameInput;
     }
 
     public void enterUsername(String username) {
         usernameInput.sendKeys(username);
     }
 
+    public void enterEmail(String email) {
+        emailInput.sendKeys(email);
+    }
+
     public void enterPassword(String password) {
         passwordInput.sendKeys(password);
     }
 
-    public void clickLoginButton() {
-        loginButton.click();
+    public void enterConfirmPassword(String confirmpassword) {
+        confirmpasswordInput.sendKeys(confirmpassword);
     }
 
     public void clickRegisterButton() {
