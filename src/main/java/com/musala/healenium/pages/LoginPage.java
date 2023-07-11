@@ -22,6 +22,10 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
+    public WebElement getUserNameInput() {
+        return this.usernameInput;
+    }
+
     public void enterUsername(String username) {
         usernameInput.sendKeys(username);
     }
