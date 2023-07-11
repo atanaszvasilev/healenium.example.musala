@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CreateNotePage {
 
-    private WebDriver driver;
+    protected WebDriver driver;
 
     @FindBy(css = "#note-title")
     public WebElement noteTitle;
@@ -17,7 +17,6 @@ public class CreateNotePage {
 
     @FindBy(css = "#add-note-origin")
     private WebElement createNoteButton;
-
 
     @FindBy(css = "#update-link")
     public WebElement updateNoteButton;

@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
-    private WebDriver driver;
+    protected WebDriver driver;
 
     @FindBy(css = "#user")
     private WebElement usernameInput;
@@ -16,6 +16,9 @@ public class LoginPage {
 
     @FindBy(xpath = "//div[@class='login']")
     private WebElement loginButton;
+
+    @FindBy(xpath = "//a[@href='/Signup']")
+    private WebElement registerButton;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -36,5 +39,9 @@ public class LoginPage {
 
     public void clickLoginButton() {
         loginButton.click();
+    }
+
+    public void clickRegisterButton() {
+        registerButton.click();
     }
 }
