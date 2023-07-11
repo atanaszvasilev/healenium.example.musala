@@ -25,23 +25,35 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    public WebElement getUserNameInput() {
+    public WebElement getUsernameInput() {
         return this.usernameInput;
     }
 
+    public WebElement getPasswordInput() {
+        return this.passwordInput;
+    }
+
+    public WebElement getLoginButton() {
+        return this.loginButton;
+    }
+
+    public WebElement getRegisterButton() {
+        return this.registerButton;
+    }
+
     public void enterUsername(String username) {
-        usernameInput.sendKeys(username);
+        getUsernameInput().sendKeys(username);
     }
 
     public void enterPassword(String password) {
-        passwordInput.sendKeys(password);
+        getPasswordInput().sendKeys(password);
     }
 
     public void clickLoginButton() {
-        loginButton.click();
+        getLoginButton().click();
     }
 
     public void clickRegisterButton() {
-        registerButton.click();
+        getRegisterButton().click();
     }
 }

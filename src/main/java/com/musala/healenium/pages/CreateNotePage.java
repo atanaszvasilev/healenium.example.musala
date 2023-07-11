@@ -9,29 +9,52 @@ public class CreateNotePage {
     protected WebDriver driver;
 
     @FindBy(css = "#note-title")
-    public WebElement noteTitle;
+    private WebElement noteTitle;
 
     @FindBy(css = "#note-body")
-    public WebElement noteDescription;
+    private WebElement noteDescription;
 
     @FindBy(css = "#add-note-origin")
     private WebElement createNoteButton;
 
     @FindBy(css = "#update-link")
-    public WebElement updateNoteButton;
+    private WebElement updateNoteButton;
+
+    @FindBy(xpath = "//div[@class='delete-modal']")
+    private WebElement noteCreatedMessage;
 
     public CreateNotePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
+    public WebElement getNoteTitle() {
+        return this.noteTitle;
+    }
+
+    public WebElement getNoteDescription() {
+        return this.noteDescription;
+    }
+
+    public WebElement getCreateNoteButton() {
+        return this.createNoteButton;
+    }
+
+    public WebElement getUpdateNoteButton() {
+        return this.updateNoteButton;
+    }
+
+    public WebElement getNoteCreatedMessage() {
+        return this.noteCreatedMessage;
+    }
+
     public void changeLayout() {
-        updateNoteButton.click();
+        getUpdateNoteButton().click();
     }
 
     public void createNote(String title, String noteDescription) {
-        this.noteTitle.sendKeys(title);
-        this.noteDescription.sendKeys(noteDescription);
-        createNoteButton.click();
+        getNoteTitle().sendKeys(title);
+        getNoteDescription().sendKeys(noteDescription);
+        getCreateNoteButton().click();
     }
 }

@@ -20,38 +20,58 @@ public class RegistrationPage {
     @FindBy(xpath = "//input[@id='confirmpassword']")
     private WebElement confirmpasswordInput;
 
-    @FindBy(xpath = "//div[@data-text='CyberNotes']")
-    private WebElement registrationConfirmartion;
-
     @FindBy(xpath = "//div[@class='btn btn--primary']")
     private WebElement registerButton;
+
+    @FindBy(xpath = "//div[@data-text='CyberNotes']")
+    private WebElement registrationConfirmartion;
 
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void enterUsername(String username) {
-        usernameInput.sendKeys(username);
+    public WebElement getUsernameInput() {
+        return this.usernameInput;
     }
 
-    public void enterEmail(String email) {
-        emailInput.sendKeys(email);
+    public WebElement getEmailInput() {
+        return this.emailInput;
     }
 
-    public void enterPassword(String password) {
-        passwordInput.sendKeys(password);
+    public WebElement getPasswordInput() {
+        return this.passwordInput;
     }
 
-    public void enterConfirmPassword(String confirmpassword) {
-        confirmpasswordInput.sendKeys(confirmpassword);
+    public WebElement getConfirmpasswordInput() {
+        return this.confirmpasswordInput;
+    }
+
+    public WebElement getRegisterButton() {
+        return this.registerButton;
     }
 
     public WebElement getRegistrationConfirmation() {
         return this.registrationConfirmartion;
     }
 
+    public void enterUsername(String username) {
+        getUsernameInput().sendKeys(username);
+    }
+
+    public void enterEmail(String email) {
+        getEmailInput().sendKeys(email);
+    }
+
+    public void enterPassword(String password) {
+        getPasswordInput().sendKeys(password);
+    }
+
+    public void enterConfirmPassword(String confirmpassword) {
+        getConfirmpasswordInput().sendKeys(confirmpassword);
+    }
+
     public void clickRegisterButton() {
-        registerButton.click();
+        getRegisterButton().click();
     }
 }
