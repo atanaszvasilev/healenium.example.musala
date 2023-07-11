@@ -44,6 +44,7 @@ public class BaseTest {
 
         // Set up pages
         loginPage = new LoginPage(driver);
+        registrationPage = new RegistrationPage(driver);
     }
 
     @AfterAll
