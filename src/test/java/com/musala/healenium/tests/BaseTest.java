@@ -10,7 +10,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.musala.healenium.constants.BrowserType;
 import com.musala.healenium.constants.DriverType;
@@ -20,7 +19,6 @@ import com.musala.healenium.settings.DriverContext;
 
 public class BaseTest {
     static protected WebDriver driver;
-    static protected WebDriverWait wait;
     static protected String pageUrl;
     static protected String loginUsername;
     static protected String loginPassword;
@@ -46,7 +44,6 @@ public class BaseTest {
 
         // Set up pages
         loginPage = new LoginPage(driver);
-        registrationPage = new RegistrationPage(driver);
     }
 
     @AfterAll

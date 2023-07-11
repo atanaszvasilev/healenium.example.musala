@@ -20,6 +20,9 @@ public class RegistrationPage {
     @FindBy(xpath = "//input[@id='confirmpassword']")
     private WebElement confirmpasswordInput;
 
+    @FindBy(xpath = "//div[@data-text='CyberNotes']")
+    private WebElement registrationConfirmartion;
+
     @FindBy(xpath = "//div[@class='btn btn--primary']")
     private WebElement registerButton;
 
@@ -42,6 +45,10 @@ public class RegistrationPage {
 
     public void enterConfirmPassword(String confirmpassword) {
         confirmpasswordInput.sendKeys(confirmpassword);
+    }
+
+    public WebElement getRegistrationConfirmation() {
+        return this.registrationConfirmartion;
     }
 
     public void clickRegisterButton() {

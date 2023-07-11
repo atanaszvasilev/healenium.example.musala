@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import com.musala.healenium.pages.CreateNotePage;
 import com.musala.healenium.pages.DashboardPage;
+import com.musala.healenium.pages.RegistrationPage;
 
 public class NoteTest extends BaseTest {
 
@@ -17,10 +18,12 @@ public class NoteTest extends BaseTest {
 
     @Test
     public void testLogin() throws InterruptedException {
-        loginPage.enterUsername(loginUsername);
 
+        // Enter login data
+        loginPage.enterUsername(loginUsername);
         loginPage.enterPassword(loginPassword);
         loginPage.clickLoginButton();
+
         DashboardPage dashboardPage = new DashboardPage(driver);
         assertTrue(dashboardPage.getCreateNoteMenu().isDisplayed());
     }
@@ -44,13 +47,18 @@ public class NoteTest extends BaseTest {
     @Test
     public void testRegistration() throws InterruptedException {
 
-        Thread.sleep(2000);
         loginPage.clickRegisterButton();
-        Thread.sleep(2000);
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+
+        // Enter registration data
+        Thread.sleep(1000);
         registrationPage.enterUsername(randomUsername);
         registrationPage.enterEmail(randomEmail);
         registrationPage.enterPassword(randomPassword);
         registrationPage.enterConfirmPassword(randomPassword);
         registrationPage.clickRegisterButton();
+
+        Thread.sleep(1000);
+        assertTrue(registrationPage.getRegistrationConfirmation().isDisplayed());
     }
 }
