@@ -3,6 +3,7 @@ package com.musala.healenium.tests;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 import org.junit.jupiter.api.AfterAll;
@@ -37,6 +38,7 @@ public class BaseTest {
         driver = new DriverContext(DriverType.LOCAL).getDriver(BrowserType.CHROME);
 
         driver.manage().window().setSize(new Dimension(1200, 800));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2)) ;
 
         driver.get(pageUrl);
 

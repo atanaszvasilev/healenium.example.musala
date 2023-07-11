@@ -4,3 +4,6 @@ src/test/java/.DS_Store
 src/test/java/com/.DS_Store
 src/test/java/com/musala/.DS_Store
 src/test/java/com/musala/healenium/.DS_Store
+.settings/org.eclipse.jdt.apt.core.prefs
+.vscode/settings.json
+src/.DS_Store
