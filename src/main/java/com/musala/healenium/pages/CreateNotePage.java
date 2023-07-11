@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CreateNotePage {
-
     protected WebDriver driver;
 
     @FindBy(css = "#note-title")

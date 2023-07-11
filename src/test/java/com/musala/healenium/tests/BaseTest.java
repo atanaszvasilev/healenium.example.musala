@@ -6,15 +6,15 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 import com.musala.healenium.constants.BrowserType;
 import com.musala.healenium.constants.DriverType;
 import com.musala.healenium.pages.LoginPage;
-import com.musala.healenium.pages.RegistrationPage;
 import com.musala.healenium.settings.DriverContext;
 
 public class BaseTest {
@@ -22,13 +22,10 @@ public class BaseTest {
     static protected String pageUrl;
     static protected String loginUsername;
     static protected String loginPassword;
-
     static protected LoginPage loginPage;
-    static protected RegistrationPage registrationPage;
 
-    @BeforeAll
+    @BeforeClass
     static public void setUp() throws FileNotFoundException, IOException {
-
         // Set up properties
         pageUrl = getProperty("page.url");
         loginUsername = getProperty("login.username");
@@ -41,24 +38,32 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 
         driver.get(pageUrl);
-
-        // Set up pages
-        loginPage = new LoginPage(driver);
     }
 
-    @AfterAll
+    @BeforeMethod
+    public void setUpTest() throws InterruptedException {
+        driver.get(pageUrl);
+        loginPage = new LoginPage(driver);
+        Thread.sleep(1000);
+    }
+
+    @AfterClass
     static public void afterAll() {
         if (driver != null) {
             driver.quit();
         }
     }
 
-    public static String getProperty(String property) throws FileNotFoundException, IOException {
-
+    private static String getProperty(String property) throws FileNotFoundException, IOException {
         Properties prop = new Properties();
-
         prop.load(new FileInputStream("src/test/resources/test.config.properties"));
 
         return prop.getProperty(property);
+    }
+
+    protected static void login(LoginPage loginPage, String loginUsername, String loginPassword) {
+        loginPage.enterUsername(loginUsername);
+        loginPage.enterPassword(loginPassword);
+        loginPage.clickLoginButton();
     }
 }
