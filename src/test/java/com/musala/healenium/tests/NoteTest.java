@@ -14,7 +14,7 @@ import com.musala.healenium.pages.RegistrationPage;
 public class NoteTest extends BaseTest {
     private final String randomUsername = "testUser" + new Random().nextInt(10000);
     private final String randomEmail = "testEmail" + new Random().nextInt(10000) + "@gmail.com";
-    private final String randomPassword = "testPasword" + new Random().nextInt(10000);
+    private final String randomPassword = "testPassword" + new Random().nextInt(10000);
 
     @Test
     public void testLogin() {
