@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -50,6 +51,17 @@ public class RemoteDriver implements IDriverInterface {
         capabilities.setCapability("browserName", "edge");
         capabilities.setCapability("browserVersion", "98.0");
         capabilities.setCapability("enableVNC", true);
+
+        return capabilities;
+    }
+
+    @Override
+    public Object useAppium() {
+        MutableCapabilities capabilities = new MutableCapabilities();
+        capabilities.setCapability("platformName", "android");
+        capabilities.setCapability("deviceName", "emulator-5554");
+        capabilities.setCapability("browserName", "chrome");
+        capabilities.setCapability("nativeWebScreenshot", true);
 
         return capabilities;
     }

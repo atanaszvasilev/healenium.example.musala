@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -43,5 +44,12 @@ public class ProxyDriver implements IDriverInterface {
         options.addArguments("--disable-dev-shm-usage");
 
         return options;
+    }
+
+    @Override
+    public Object useAppium() {
+        MutableCapabilities capabilities = new MutableCapabilities();
+
+        return capabilities;
     }
 }
