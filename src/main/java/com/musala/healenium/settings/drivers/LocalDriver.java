@@ -7,10 +7,13 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.epam.healenium.SelfHealingDriver;
 import com.musala.healenium.settings.IDriverInterface;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.remote.AutomationName;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class LocalDriver implements IDriverInterface {
@@ -49,6 +52,20 @@ public class LocalDriver implements IDriverInterface {
         EdgeOptions options = new EdgeOptions();
 
         WebDriver delegate = new EdgeDriver(options);
+        return delegate;
+    }
+
+    @Override
+    public Object useAppium() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("platformName", "Android");
+        capabilities.setCapability("deviceName", "emulator-5554");
+        capabilities.setCapability("automationName", AutomationName.ANDROID_UIAUTOMATOR2);
+        capabilities.setCapability("browserName", "chrome");
+        capabilities.setCapability("chromedriverDisableBuildCheck", true);
+        capabilities.setCapability("chromedriverUseSystemExecutable", true);
+
+        AppiumDriver delegate = new AppiumDriver(capabilities);
         return delegate;
     }
 }

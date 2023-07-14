@@ -41,6 +41,9 @@ public class DriverContext {
         case IE:
             this.driver = context.setDriver(context.useEdge());
             break;
+        case APPIUM:
+            this.driver = context.setDriver(context.useAppium());
+            break;
         }
         return this.driver;
     }
