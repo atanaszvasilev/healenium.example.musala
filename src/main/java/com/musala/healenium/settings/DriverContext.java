@@ -27,22 +27,21 @@ public class DriverContext {
             this.context = new RemoteDriver();
             break;
         }
-
     }
 
     public WebDriver getDriver(BrowserType browser) throws MalformedURLException {
         switch (browser) {
         case CHROME:
-            this.driver = context.setDriver(context.useChrome());
+            this.driver = context.setDriver(browser, context.useChrome());
             break;
         case FIREFOX:
-            this.driver = context.setDriver(context.useFirefox());
+            this.driver = context.setDriver(browser, context.useFirefox());
             break;
         case IE:
-            this.driver = context.setDriver(context.useEdge());
+            this.driver = context.setDriver(browser, context.useEdge());
             break;
         case APPIUM:
-            this.driver = context.setDriver(context.useAppium());
+            this.driver = context.setDriver(browser, context.useAppium());
             break;
         }
         return this.driver;
