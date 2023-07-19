@@ -34,7 +34,7 @@ public class BaseTest {
         loginPassword = getProperty("login.password");
 
         // Set up driver
-        driver = new DriverContext(DriverType.LOCAL).getDriver(BrowserType.CHROME);
+        driver = new DriverContext(DriverType.PROXY).getDriver(BrowserType.CHROME);
         driver.manage().window().setSize(new Dimension(1200, 800));
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }

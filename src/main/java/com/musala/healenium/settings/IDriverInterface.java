@@ -4,13 +4,15 @@ import java.net.MalformedURLException;
 
 import org.openqa.selenium.WebDriver;
 
+import com.musala.healenium.constants.BrowserType;
+
 public interface IDriverInterface {
 
     static final String LOCALHOST = "localhost";
     static final String SELENOID = "10.6.223.91";
-    static final String APPIUM = "localhost:8085";
+    static final String APPIUM = "localhost:4723";
 
-    WebDriver setDriver(Object delegate) throws MalformedURLException;
+    WebDriver setDriver(BrowserType browserType, Object delegate) throws MalformedURLException;
 
     Object useChrome();
 

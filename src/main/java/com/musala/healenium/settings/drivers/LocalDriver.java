@@ -1,5 +1,7 @@
 package com.musala.healenium.settings.drivers;
 
+import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -7,9 +9,11 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.epam.healenium.SelfHealingDriver;
+import com.musala.healenium.constants.BrowserType;
 import com.musala.healenium.settings.IDriverInterface;
 
 import io.appium.java_client.AppiumDriver;
@@ -20,10 +24,15 @@ public class LocalDriver implements IDriverInterface {
     private SelfHealingDriver driver;
 
     @Override
-    public WebDriver setDriver(Object delegate) {
-        driver = SelfHealingDriver.create((WebDriver) delegate);
-
-        return driver;
+    public WebDriver setDriver(BrowserType browserType, Object delegate) {
+        switch (browserType) {
+        case APPIUM:
+            AppiumDriver driverDelegate = new AppiumDriver((Capabilities) delegate);
+            return driver = SelfHealingDriver.create((WebDriver) driverDelegate);
+        default:
+            driver = SelfHealingDriver.create((WebDriver) delegate);
+            return driver;
+        }
     }
 
     @Override
@@ -58,14 +67,13 @@ public class LocalDriver implements IDriverInterface {
     @Override
     public Object useAppium() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("platformName", "Android");
+        capabilities.setCapability("platformName", Platform.ANDROID.name());
         capabilities.setCapability("deviceName", "emulator-5554");
         capabilities.setCapability("automationName", AutomationName.ANDROID_UIAUTOMATOR2);
-        capabilities.setCapability("browserName", "chrome");
+        capabilities.setCapability("browserName", Browser.CHROME.browserName());
         capabilities.setCapability("chromedriverDisableBuildCheck", true);
         capabilities.setCapability("chromedriverUseSystemExecutable", true);
 
-        AppiumDriver delegate = new AppiumDriver(capabilities);
-        return delegate;
+        return capabilities;
     }
 }

@@ -33,7 +33,7 @@ public class BaseTestAndroid {
         loginPassword = getProperty("login.password");
 
         // Set up driver
-        driver = new DriverContext(DriverType.LOCAL).getDriver(BrowserType.APPIUM);
+        driver = new DriverContext(DriverType.PROXY).getDriver(BrowserType.APPIUM);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
